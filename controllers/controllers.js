@@ -130,7 +130,7 @@ export const deleteAllTasks = (req, res) => {
 
 // Controller function to get all published tutorials
 export const getCompletedTasks = (req, res) => {
-    Task.getAllPublished((err, data) => {
+    Task.getAllCompleted((err, data) => {
         if (err) {
             console.error("Error retrieving published tasks:", err);
             return res.status(500).json({
