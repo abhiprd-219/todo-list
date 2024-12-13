@@ -4,7 +4,7 @@ import Task from '../models/filter.js'; // Import the Task model
 export const filterTasks = async (req, res) => {
     const { project_id, due_date, is_completed } = req.query;
 
-    if (!project_id && !due_date && is_completed === undefined) {
+    if (!project_id && !due_date && !is_completed) {
         return res.status(400).json({
             message: "At least one filter (project_id, due_date, or is_completed) is required.",
         });
@@ -39,6 +39,7 @@ export const filterTasks = async (req, res) => {
                 message: "No tasks found for the given filters",
             });
         }
+        
 
         res.status(200).json(data);
     } catch (error) {
