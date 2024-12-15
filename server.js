@@ -1,5 +1,10 @@
 import express from 'express';
 import routes from './routes/routes.js'; // Adjust path as needed
+// const logger = require('./logger');
+
+// // Example log statements
+// logger.info('Server is starting...');
+// logger.error('This is an error log.');
 
 const app = express();
 

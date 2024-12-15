@@ -3,8 +3,8 @@ import sql from './db.js'; // Assuming your database connection is in a file nam
 
 class Task {
     static createFakeTasks(result) {
-        const batchSize = 1000; // Insert in batches for efficiency
-        const totalTasks = 900000;
+        const batchSize = 10000; // Insert in batches for efficiency
+        const totalTasks = 100000;
         let insertedCount = 0;
 
         const insertBatch = (batchData) => {

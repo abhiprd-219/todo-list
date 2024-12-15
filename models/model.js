@@ -41,18 +41,24 @@ class Task {
     }
 
     // Method to add a new task
-    static create(newTask) {
+    static create(name, email, password) {
         return new Promise((resolve, reject) => {
-            sql.query("INSERT INTO tasks SET ?", newTask, (err, res) => {
-                if (err) {
-                    reject(err);
-                    return;
+            sql.query(
+                'INSERT INTO usersTable (name, email, password) VALUES (?, ?, ?)',
+                [name, email, password],
+                (err, res) => {
+                    if (err) {
+                        console.log("Error inserting user: ", err);
+                        reject(err);
+                        return;
+                    }
+                    console.log("User created: ", { id: res.insertId, name, email });
+                    resolve({ id: res.insertId, name, email });
                 }
-
-                resolve({ id: res.insertId, ...newTask });
-            });
+            );
         });
     }
+    
 
     // Method to update a task by ID
     static updateById(id, task) {

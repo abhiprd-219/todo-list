@@ -7,18 +7,18 @@ class Task {
             sql.query(query, params, (err, res) => {
                 if (err) {
                     console.error("Error executing dynamic filter query:", err);
-                    reject(err); 
+                    reject(err);
                     return;
                 }
 
                 if (res.length === 0) {
                     console.log("No tasks found for the given filters.");
-                    resolve([]); 
+                    resolve([]);
                     return;
                 }
 
                 console.log("Filtered tasks:", res);
-                resolve(res); 
+                resolve(res);
             });
         });
     }
